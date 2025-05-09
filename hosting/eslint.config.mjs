@@ -32,7 +32,6 @@ export default [
       ...pluginJs.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
       ...nextPlugin.configs['core-web-vitals'].rules,
-      // เพิ่ม custom rules ได้ที่นี่
       'no-console': 'warn', // เตือนเมื่อใช้ console.log
       'no-unused-vars': 'off', // ปิดของ JS ใช้ของ TS แทน
       '@typescript-eslint/no-unused-vars': [
