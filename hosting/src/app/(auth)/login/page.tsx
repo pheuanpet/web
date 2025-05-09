@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Input } from '@/components/ui/input';
+
 export default function Page() {
   return (
     <div
@@ -41,7 +43,7 @@ export default function Page() {
             </div>
             <div style={{ marginBottom: '0.5rem' }}>
               <label htmlFor='password'>Password</label>
-              <input
+              {/* <input
                 id='password'
                 type='password'
                 required
@@ -52,7 +54,8 @@ export default function Page() {
                   borderRadius: 4,
                   border: '1px solid #ccc',
                 }}
-              />
+              /> */}
+              <Input type='password' />
             </div>
             <div
               style={{

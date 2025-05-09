@@ -1,25 +1,72 @@
-# Welcome to Next.js
+# Pheuanpet Web
 
-This is the most minimal starter for your Next.js project.
+เว็บแอปพลิเคชันสำหรับโครงการ Pheuanpet พัฒนาด้วย [Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/) และ [Tailwind CSS](https://tailwindcss.com/)
 
-## Deploy your own
+## Features
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/hello-world&project-name=hello-world&repository-name=hello-world)
+- Next.js 14 (latest)
+- TypeScript
+- Tailwind CSS + Typography plugin
+- Firebase integration
+- ESLint & Prettier พร้อม config สำหรับ Next.js/TypeScript
 
-## How to use
+## โครงสร้างโปรเจกต์
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example hello-world hello-world-app
+```
+hosting/
+├── src/                # Source code หลัก (components, pages, etc.)
+├── public/             # Static files
+├── package.json        # รายการ dependencies และ scripts
+├── tailwind.config.js  # Tailwind CSS config
+├── postcss.config.js   # PostCSS config
+├── next.config.js      # Next.js config
+├── tsconfig.json       # TypeScript config
+├── eslint.config.mjs   # ESLint config
+└── README.md           # ไฟล์นี้
 ```
 
-```bash
-yarn create next-app --example hello-world hello-world-app
-```
+## วิธีติดตั้งและใช้งาน
+
+1. ติดตั้ง dependencies
+
+   ```bash
+   yarn install
+   # หรือ
+   npm install
+   ```
+
+2. รัน development server
+
+   ```bash
+   yarn dev
+   # หรือ
+   npm run dev
+   ```
+
+3. ตรวจสอบโค้ดด้วย ESLint
+
+   ```bash
+   yarn lint
+   # หรือ
+   npm run lint
+   ```
+
+## การ build สำหรับ production
 
 ```bash
-pnpm create next-app --example hello-world hello-world-app
+yarn build
+# หรือ
+npm run build
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## การ deploy
+
+แนะนำให้ deploy ด้วย [Vercel](https://vercel.com/) หรือโฮสติ้งที่รองรับ Next.js
+
+## License
+
+MIT
+
+---
+
+> สอบถามหรือแจ้งปัญหา ติดต่อทีมงาน Pheuanpet
