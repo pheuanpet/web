@@ -1,5 +1,6 @@
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
 import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,7 +24,7 @@ const eslintConfig = [
       'react/react-in-jsx-scope': 'off', // Next.js ไม่ต้อง import React
       'prettier/prettier': 'warn',
       'import/order': [
-        'warn',
+        'error',
         {
           groups: ['builtin', 'external', 'internal'],
           'newlines-between': 'always',

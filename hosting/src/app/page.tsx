@@ -1,10 +1,12 @@
 'use client';
 
-import { auth } from '@/config/firebase-config';
+// eslint-disable-next-line import/named
 import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
+import { auth } from '@/config/firebase-config';
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null);

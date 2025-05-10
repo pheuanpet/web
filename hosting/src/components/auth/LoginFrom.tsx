@@ -1,7 +1,5 @@
 'use client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { auth } from '@/config/firebase-config';
+
 import { Icon } from '@iconify/react';
 import { FirebaseError } from 'firebase/app';
 import {
@@ -12,6 +10,10 @@ import {
 import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
+
+import { auth } from '@/config/firebase-config';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export function LoginForm() {
   const [email, setEmail] = useState('');

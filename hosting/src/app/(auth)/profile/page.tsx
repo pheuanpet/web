@@ -3,13 +3,15 @@
 import { useEffect, useState } from 'react';
 import {
   onAuthStateChanged,
+  // eslint-disable-next-line import/named
   User,
   sendEmailVerification,
   signOut,
 } from 'firebase/auth';
-import { auth } from '@/config/firebase-config';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+import { auth } from '@/config/firebase-config';
 import { Button } from '@/components/ui/button';
 
 export default function Page() {
@@ -35,6 +37,7 @@ export default function Page() {
     try {
       await sendEmailVerification(user);
       setVerifyMsg('Verification email sent! กรุณาตรวจสอบอีเมลของคุณ');
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setVerifyMsg('เกิดข้อผิดพลาดในการส่งอีเมลยืนยัน');
     } finally {
