@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pheuanpet Web
+
+เว็บแอปพลิเคชันสำหรับโครงการ Pheuanpet พัฒนาด้วย [Next.js](https://nextjs.org/) และ [React](https://react.dev/)
+
+## Features
+
+- Next.js 15 (App Router)
+- TypeScript
+- ใช้ UI Components จาก [shadcn/ui](https://ui.shadcn.com/)
+- รองรับ Icon จาก [lucide-react](https://lucide.dev/) และ [@iconify/react](https://iconify.design/)
+- จัดการ style ด้วย Tailwind Merge (ถ้ามี)
+- Lint และ Format ด้วย ESLint + Prettier
 
 ## Getting Started
 
-First, run the development server:
+1. ติดตั้ง dependencies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   ```bash
+   yarn install
+   ```
+
+2. รัน development server
+
+   ```bash
+   yarn dev
+   ```
+
+3. เปิด [http://localhost:3000](http://localhost:3000) ใน browser
+
+4. แก้ไขไฟล์ใน `src/app/` หรือ `src/components/` แล้วบันทึก หน้าเว็บจะอัปเดตอัตโนมัติ
+
+## Project Structure
+
+```
+hosting/
+├── src/
+│   ├── app/           # Next.js app directory
+│   ├── components/    # UI components
+│   └── ...            # Other source files
+├── public/            # Static files
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Useful Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `yarn dev` – รัน dev server
+- `yarn build` – สร้าง production build
+- `yarn start` – รัน production server
+- `yarn lint` – ตรวจสอบคุณภาพโค้ด
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+แนะนำให้ deploy ด้วย [Vercel](https://vercel.com/) หรือโฮสติ้งที่รองรับ Next.js  
+ดูวิธี deploy เพิ่มเติมที่ [Next.js Deployment Docs](https://nextjs.org/docs/app/building-your-application/deploying)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> หากมีข้อสงสัยหรือพบปัญหา ติดต่อทีมงาน Pheuanpet
