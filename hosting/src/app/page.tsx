@@ -19,6 +19,9 @@ export default function Home() {
 
   useEffect(() => {
     console.log('User state changed:', user);
+    if (!user) {
+      router.replace('/feed');
+    }
   }, [user, router]);
 
   const handleLogout = async () => {

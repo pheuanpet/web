@@ -49,7 +49,7 @@ export function LoginForm() {
 
   const loginWithGoogle = async () => {
     setError('');
-    setLoading(true);
+    // setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
@@ -57,7 +57,7 @@ export function LoginForm() {
       if (err instanceof FirebaseError) setError(err.message);
       else setError('An unknown error occurred.');
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
