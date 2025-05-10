@@ -1,8 +1,6 @@
-import React from 'react';
-
-import { Input } from '@/components/ui/input';
-import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/button';
+import { Icon } from '@iconify/react/dist/iconify.js';
+import React from 'react';
 
 export default function Page() {
   return (
@@ -30,11 +28,33 @@ export default function Page() {
           <form>
             <div style={{ marginBottom: '1rem' }}>
               <label htmlFor='email'>Email</label>
-              <Input type='email' />
+              <input
+                id='email'
+                type='email'
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.5rem',
+                  marginTop: '0.25rem',
+                  borderRadius: 4,
+                  border: '1px solid #ccc',
+                }}
+              />
             </div>
             <div style={{ marginBottom: '0.5rem' }}>
               <label htmlFor='password'>Password</label>
-              <Input type='password' />
+              <input
+                id='password'
+                type='password'
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.5rem',
+                  marginTop: '0.25rem',
+                  borderRadius: 4,
+                  border: '1px solid #ccc',
+                }}
+              />
             </div>
             <div
               style={{
@@ -73,25 +93,9 @@ export default function Page() {
           <div
             style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
           >
-            <button
-              style={{
-                width: '100%',
-                padding: '0.5rem',
-                border: '1px solid #ccc',
-                borderRadius: 4,
-                background: '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                justifyContent: 'center',
-              }}
-            >
-              <Icon icon='icon-[flat-color-icons--google]' />
+            <Button>
+              <Icon icon={'devicon:google'} />
               Google
-            </button>
-            <Button type='button' variant='outline'>
-              <Icon icon='icon-[logos--facebook]' />
-              Facebook
             </Button>
 
             <button
@@ -107,7 +111,23 @@ export default function Page() {
                 justifyContent: 'center',
               }}
             >
-              <Icon icon='icon-[devicon--apple]' />
+              <img src='/facebook.svg' alt='Facebook' width={20} height={20} />
+              Facebook
+            </button>
+            <button
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                border: '1px solid #ccc',
+                borderRadius: 4,
+                background: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                justifyContent: 'center',
+              }}
+            >
+              <img src='/apple.svg' alt='Apple' width={20} height={20} />
               Apple
             </button>
           </div>
@@ -117,8 +137,7 @@ export default function Page() {
       <div
         style={{
           flex: '0 0 60%',
-          background:
-            "url('/images/login-image.jpg') center center / cover no-repeat",
+          background: "url('/login-image.jpg') center center / cover no-repeat",
         }}
       >
         {/* คุณสามารถเปลี่ยน '/login-image.jpg' เป็น path รูปที่ต้องการ */}
