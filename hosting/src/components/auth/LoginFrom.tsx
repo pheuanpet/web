@@ -61,107 +61,107 @@ export function LoginForm() {
 
   return (
     <>
-      <h2 className='flex flex-col items-center mb-8'>
-        <span className='mb-2'>
+      <h2 className="flex flex-col items-center mb-8">
+        <span className="mb-2">
           <Image src={'/logo.png'} alt={'Pheuanpet'} width={100} height={100} />
         </span>
-        <span className='text-2xl font-bold tracking-tight text-gray-800'>
+        <span className="text-2xl font-bold tracking-tight text-gray-800">
           pheuan pet
         </span>
       </h2>
       <form onSubmit={handleSubmit}>
-        <div className='mb-4'>
-          <label htmlFor='email' className='block text-sm font-medium mb-1'>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium mb-1">
             Email
           </label>
           <Input
-            id='email'
-            type='email'
+            id="email"
+            type="email"
             required
-            placeholder='you@email.com'
+            placeholder="you@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='mb-2 relative'>
-          <label htmlFor='password' className='block text-sm font-medium mb-1'>
+        <div className="mb-2 relative">
+          <label htmlFor="password" className="block text-sm font-medium mb-1">
             Password
           </label>
           <Input
-            id='password'
+            id="password"
             type={showPassword ? 'text' : 'password'}
             required
-            placeholder='••••••••'
+            placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
-            type='button'
+            type="button"
             onClick={togglePasswordVisibility}
-            className='absolute right-3 top-8 text-gray-500'
+            className="absolute right-3 top-8 text-gray-500"
           >
             {showPassword ? (
-              <Icon icon='mdi:eye-off' width={20} height={20} />
+              <Icon icon="mdi:eye-off" width={20} height={20} />
             ) : (
-              <Icon icon='mdi:eye' width={20} height={20} />
+              <Icon icon="mdi:eye" width={20} height={20} />
             )}
           </button>
         </div>
-        <div className='mb-2'>
-          {error && <div className='text-red-500 text-sm '>{error}</div>}
+        <div className="mb-2">
+          {error && <div className="text-red-500 text-sm ">{error}</div>}
         </div>
-        <div className='flex justify-between items-center mb-6'>
-          <Link href='#' className='text-xs text-blue-600 hover:underline'>
+        <div className="flex justify-between items-center mb-6">
+          <Link href="#" className="text-xs text-blue-600 hover:underline">
             ลืมรหัสผ่าน?
           </Link>
           <Link
-            href='/register'
-            className='text-xs text-blue-600 hover:underline'
+            href="/register"
+            className="text-xs text-blue-600 hover:underline"
           >
             สมัครสมาชิก
           </Link>
         </div>
-        <Button type='submit' className='w-full mb-4'>
+        <Button type="submit" className="w-full mb-4">
           {loading ? (
-            <div className='flex items-center justify-center'>
+            <div className="flex items-center justify-center">
               <Icon
-                icon='material-symbols:loading'
-                className='animate-spin'
+                icon="material-symbols:loading"
+                className="animate-spin"
                 width={20}
                 height={20}
               />
-              <span className='ml-2'>กำลังเข้าสู่ระบบ...</span>
+              <span className="ml-2">กำลังเข้าสู่ระบบ...</span>
             </div>
           ) : (
             <span>เข้าสู่ระบบ</span>
           )}
         </Button>
       </form>
-      <div className='text-center text-sm text-gray-500 my-4'>
+      <div className="text-center text-sm text-gray-500 my-4">
         หรือเข้าสู่ระบบด้วย
       </div>
-      <div className='flex flex-col gap-2'>
+      <div className="flex flex-col gap-2">
         <Button
-          type='button'
-          variant='outline'
-          className='w-full flex items-center gap-2 justify-center'
+          type="button"
+          variant="outline"
+          className="w-full flex items-center gap-2 justify-center"
           onClick={loginWithGoogle}
         >
-          <Icon icon='devicon:google' width={20} height={20} />
+          <Icon icon="devicon:google" width={20} height={20} />
           Google
         </Button>
         <Button
-          variant='outline'
-          className='w-full flex items-center gap-2 justify-center'
+          variant="outline"
+          className="w-full flex items-center gap-2 justify-center"
         >
-          <Icon icon='logos:facebook' width={20} height={20} />
+          <Icon icon="logos:facebook" width={20} height={20} />
           Facebook
         </Button>
         <Button
-          variant='outline'
-          className='w-full flex items-center gap-2 justify-center'
+          variant="outline"
+          className="w-full flex items-center gap-2 justify-center"
         >
-          <Icon icon='devicon:apple' width={20} height={20} />
+          <Icon icon="devicon:apple" width={20} height={20} />
           Apple
         </Button>
       </div>

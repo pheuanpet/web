@@ -15,7 +15,7 @@ const eslintConfig = [
     'next/typescript',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'plugin:import/recommended'
+    'plugin:import/recommended',
   ),
   {
     rules: {
@@ -29,6 +29,7 @@ const eslintConfig = [
           'newlines-between': 'always',
         },
       ],
+      quotes: ['error', 'single'],
     },
   },
 ];
