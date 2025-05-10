@@ -31,6 +31,10 @@ const eslintConfig = [
         },
       ],
       quotes: ['error', 'single'],
+      'react/jsx-curly-brace-presence': [
+        'error',
+        { props: 'never', children: 'never' },
+      ],
     },
   },
 ];

@@ -26,7 +26,7 @@ export default function Page() {
         </div>
       </div>
       <div className="hidden md:flex flex-1 items-center justify-center bg-cover bg-center">
-        <Image src={'/logo.png'} alt={'Pheuanpet'} width={100} height={100} />
+        <Image src="/logo.png" alt="Pheuanpet" width={100} height={100} />
       </div>
     </div>
   );
