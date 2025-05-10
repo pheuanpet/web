@@ -65,7 +65,7 @@ export function LoginForm() {
     <>
       <h2 className="flex flex-col items-center mb-8">
         <span className="mb-2">
-          <Image src={'/logo.png'} alt={'Pheuanpet'} width={100} height={100} />
+          <Image src="/logo.png" alt="Pheuanpet" width={100} height={100} />
         </span>
         <span className="text-2xl font-bold tracking-tight text-gray-800">
           pheuan pet
