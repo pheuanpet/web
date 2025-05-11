@@ -38,7 +38,7 @@ export default function Page() {
           {/* User Info */}
           <div className="flex items-center gap-3">
             <Image
-              src={post.user.avatar}
+              src="/logo.png"
               alt={post.user.name}
               width={40}
               height={40}
@@ -52,7 +52,7 @@ export default function Page() {
           {/* Post Image */}
           <div className="w-full aspect-square relative rounded-lg overflow-hidden bg-gray-100">
             <Image
-              src={post.image}
+              src="/logo.png"
               alt="post"
               fill
               className="object-cover"
