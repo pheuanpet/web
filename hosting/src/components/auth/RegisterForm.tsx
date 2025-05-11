@@ -3,8 +3,8 @@
 import { Icon } from '@iconify/react';
 import { FirebaseError } from 'firebase/app';
 import {
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from 'firebase/auth';
 import Link from 'next/link';
@@ -15,63 +15,63 @@ import { auth } from '@/config/firebase-config';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
-export function LoginForm() {
+export function RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
+
+  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    if (password !== confirmPassword) {
+      setError('รหัสผ่านไม่ตรงกัน');
+      return;
+    }
     try {
       setLoading(true);
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (err: unknown) {
       if (err instanceof FirebaseError) {
-        if (err.code === 'auth/invalid-credential') {
-          setError('Invalid email or password.');
-        }
-        if (err.code === 'auth/too-many-requests') {
-          setError('Too many login attempts. Please try again later.');
-        } else setError(err.message);
+        setError(err.message);
       } else {
-        setError('An unknown error occurred.');
+        setError('เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ');
       }
     } finally {
       setLoading(false);
     }
   };
 
-  const loginWithGoogle = async () => {
+  const registerWithGoogle = async () => {
     setError('');
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
     } catch (err: unknown) {
       if (err instanceof FirebaseError) setError(err.message);
-      else setError('An unknown error occurred.');
+      else setError('เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ');
     }
   };
 
   return (
-    <>
-      <h2 className="flex flex-col items-center mb-8">
-        <span className="mb-2">
-          <Image src="/logo.png" alt="Pheuanpet" width={100} height={100} />
-        </span>
-        <span className="text-2xl font-bold tracking-tight text-gray-800">
+    <div className="max-w-xs mx-auto w-full">
+      <div className="flex flex-col items-center mb-8">
+        <Image src="/logo.png" alt="Pheuanpet" width={80} height={80} />
+        <span className="text-2xl font-bold tracking-tight text-gray-800 mt-2">
           PheuanPet
         </span>
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <span className="text-xs text-gray-500 mt-1">
+          แพลตฟอร์มโซเชียลสำหรับคนรักสัตว์
+        </span>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
           <label htmlFor="email" className="block text-sm font-medium mb-1">
-            Email
+            อีเมล
           </label>
           <Input
             id="email"
@@ -80,11 +80,12 @@ export function LoginForm() {
             placeholder="you@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
           />
         </div>
-        <div className="mb-2 relative">
+        <div className="relative">
           <label htmlFor="password" className="block text-sm font-medium mb-1">
-            Password
+            รหัสผ่าน
           </label>
           <Input
             id="password"
@@ -93,11 +94,13 @@ export function LoginForm() {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
           />
           <button
             type="button"
             onClick={togglePasswordVisibility}
             className="absolute right-3 top-8 text-gray-500"
+            tabIndex={-1}
           >
             {showPassword ? (
               <Icon icon="mdi:eye-off" width={20} height={20} />
@@ -106,24 +109,25 @@ export function LoginForm() {
             )}
           </button>
         </div>
-        <div className="mb-2">
-          {error && <div className="text-red-500 text-sm ">{error}</div>}
-        </div>
-        <div className="flex justify-between items-center mb-6">
-          <Link
-            href="/forget-password"
-            className="text-xs text-blue-600 hover:underline"
+        <div>
+          <label
+            htmlFor="confirmPassword"
+            className="block text-sm font-medium mb-1"
           >
-            ลืมรหัสผ่าน?
-          </Link>
-          <Link
-            href="/register"
-            className="text-xs text-blue-600 hover:underline"
-          >
-            สมัครสมาชิก
-          </Link>
+            ยืนยันรหัสผ่าน
+          </label>
+          <Input
+            id="confirmPassword"
+            type={showPassword ? 'text' : 'password'}
+            required
+            placeholder="••••••••"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
+          />
         </div>
-        <Button type="submit" className="w-full mb-4">
+        {error && <div className="text-red-500 text-sm">{error}</div>}
+        <Button type="submit" className="w-full">
           {loading ? (
             <div className="flex items-center justify-center">
               <Icon
@@ -132,25 +136,25 @@ export function LoginForm() {
                 width={20}
                 height={20}
               />
-              <span className="ml-2">กำลังเข้าสู่ระบบ...</span>
+              <span className="ml-2">กำลังสมัครสมาชิก...</span>
             </div>
           ) : (
-            <span>เข้าสู่ระบบ</span>
+            <span>สมัครสมาชิก</span>
           )}
         </Button>
       </form>
       <div className="text-center text-sm text-gray-500 my-4">
-        หรือเข้าสู่ระบบด้วย
+        หรือสมัครด้วย
       </div>
       <div className="flex flex-col gap-2">
         <Button
           type="button"
           variant="outline"
           className="w-full flex items-center gap-2 justify-center"
-          onClick={loginWithGoogle}
+          onClick={registerWithGoogle}
         >
           <Icon icon="devicon:google" width={20} height={20} />
-          Google
+          สมัครด้วย Google
         </Button>
         <Button
           variant="outline"
@@ -158,7 +162,7 @@ export function LoginForm() {
           disabled
         >
           <Icon icon="logos:facebook" width={20} height={20} />
-          Facebook
+          สมัครด้วย Facebook
         </Button>
         <Button
           variant="outline"
@@ -166,9 +170,15 @@ export function LoginForm() {
           disabled
         >
           <Icon icon="devicon:apple" width={20} height={20} />
-          Apple
+          สมัครด้วย Apple
         </Button>
       </div>
-    </>
+      <div className="text-center text-xs text-gray-500 mt-6">
+        มีบัญชีอยู่แล้ว?{' '}
+        <Link href="/login" className="text-blue-600 hover:underline">
+          เข้าสู่ระบบ
+        </Link>
+      </div>
+    </div>
   );
 }

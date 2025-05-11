@@ -130,7 +130,7 @@ export default function ProfilePage() {
         </div>
 
         {/* ปุ่ม Follow (แสดงเฉพาะถ้าเป็นโปรไฟล์คนอื่น) */}
-        {/* <Button className="mb-4">ติดตาม</Button> */}
+        <Button className="mb-4">ติดตาม</Button>
 
         {/* ข้อมูลเพิ่มเติม (mock) */}
         <div className="text-xs text-gray-400 mb-2">Bangkok, Thailand</div>
@@ -153,7 +153,6 @@ export default function ProfilePage() {
           </a>
         </div>
 
-        {/* Debug: User object */}
         <pre className="bg-gray-100 rounded p-2 text-xs w-full overflow-x-auto">
           {JSON.stringify(user, null, 2)}
         </pre>

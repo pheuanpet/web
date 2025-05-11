@@ -1,53 +1,32 @@
 'use client';
-
-import { useEffect, useState } from 'react';
-// eslint-disable-next-line import/named
-import { onAuthStateChanged, User } from 'firebase/auth';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '@/config/firebase-config';
-
-export default function ProfilePage() {
-  const [user, setUser] = useState<User | null>(null);
+import { RegisterForm } from '@/components/auth/RegisterForm';
+export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.replace('/login');
+      if (user) {
+        // router.replace('/profile');
       }
-      setUser(user);
     });
     return () => unsubscribe();
   }, [router]);
 
-  if (!user) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <span className="text-gray-500">Loading...</span>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md flex flex-col items-center">
-        <Image
-          src={user.photoURL || '/default-avatar.png'}
-          alt="Profile"
-          width={96}
-          height={96}
-          className="rounded-full mb-4"
-        />
-        <h2 className="text-xl font-bold mb-2">
-          {user.displayName || 'No Name'}
-        </h2>
-        <p className="text-gray-700 mb-1">{user.email}</p>
-        <div className="text-xs text-gray-400 mb-4">UID: {user.uid}</div>
-        <pre className="bg-gray-100 rounded p-2 text-xs w-full overflow-x-auto">
-          {JSON.stringify(user, null, 2)}
-        </pre>
+    <div className="flex min-h-screen font-sans bg-gray-50">
+      <div className="flex flex-col justify-center items-center w-full max-w-md px-8 py-12 bg-white shadow-md">
+        <div className="w-full max-w-xs">
+          <RegisterForm />
+        </div>
+      </div>
+      <div className="hidden md:flex flex-1 items-center justify-center bg-cover bg-center">
+        <Image src="/logo.png" alt="Pheuanpet" width={100} height={100} />
       </div>
     </div>
   );
