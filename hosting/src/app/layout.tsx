@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: 'Pheuanpet',
     images: [
       {
-        url: 'https://www.pheuanpet.com/images/logo.png', // ใส่ URL โลโก้เว็บไซต์ของคุณ (ถ้ามี)
+        url: 'https://www.pheuanpet.com/logo.png', // ใส่ URL โลโก้เว็บไซต์ของคุณ (ถ้ามี)
         width: 800,
         height: 600,
       },
