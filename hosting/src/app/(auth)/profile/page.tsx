@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 import { auth } from '@/config/firebase-config';
 import { Button } from '@/components/ui/button';
@@ -86,9 +87,6 @@ export default function ProfilePage() {
       <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-[768px] flex flex-col items-start">
         {/* ปุ่ม Logout และ Edit */}
         <div className="flex w-full justify-end gap-2 mb-2">
-          <Button type="button" onClick={handleEdit} variant="outline">
-            Edit
-          </Button>
           <Button type="button" onClick={handleLogout} variant="ghost">
             <span className="text-gray-500">Logout</span>
           </Button>
@@ -96,15 +94,28 @@ export default function ProfilePage() {
 
         {/* รูปโปรไฟล์ */}
         <div className="flex items-center gap-4 mb-4">
-          <Image
-            src={user.photoURL || '/logo.png'}
-            alt="Profile"
-            width={96}
-            height={96}
-            className="rounded-full"
-          />
+          <div className="relative">
+            <Image
+              src={user.photoURL || '/logo.png'}
+              alt="Profile"
+              width={96}
+              height={96}
+              className="rounded-full"
+            />
+            <Icon
+              icon="mdi-light:camera"
+              className="absolute right-0 bottom-0 text-gray-500 cursor-pointer h-8 w-8 bg-white border rounded-full p-1"
+            />
+          </div>
+
           <div>
-            <h2 className="text-xl font-bold mb-1">{displayName}</h2>
+            <div className="relative">
+              <h2 className="text-xl font-bold mb-1">{displayName}</h2>
+              <Icon
+                icon="tabler:edit"
+                className="absolute right-0 top-2 text-gray-500 cursor-pointer"
+              />
+            </div>
             <div className="text-sm text-gray-500 mb-1">@{username}</div>
             <p className="text-gray-700 mb-1">{user.email}</p>
             {!user.emailVerified && (
@@ -131,7 +142,14 @@ export default function ProfilePage() {
 
         {/* Bio/About Me */}
         <div className="w-full mb-4">
-          <div className="font-semibold text-gray-800 mb-1">เกี่ยวกับฉัน</div>
+          <div className="font-semibold text-gray-800 mb-1 flex gap-2 items-center">
+            เกี่ยวกับฉัน
+            <Icon
+              icon="tabler:edit"
+              className=" text-gray-500 cursor-pointer "
+              onClick={handleEdit}
+            />
+          </div>
           {editing ? (
             <div className="flex flex-col gap-2">
               <textarea
@@ -154,7 +172,7 @@ export default function ProfilePage() {
               </div>
             </div>
           ) : (
-            <div className="text-gray-700 text-sm">{bio}</div>
+            <div className="text-gray-700 text-sm ">{bio}</div>
           )}
         </div>
 
